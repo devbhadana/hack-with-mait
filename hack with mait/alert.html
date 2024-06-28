@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Cards with Alert Button</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            background-image: url(pexels-muallim-nur-19576471.jpg);
+    background-position: center;
+    background-size: cover;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: 1;
+        }
+
+        .card {
+            width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 15px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .alert-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .alert-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">Name: Agency 1</h2>
+            <h5>Contact No.: </h5>
+            <h5>Availaible Resource:  </h5>
+            
+        </div>
+        <button class="alert-button" onclick="showAlert('Alert Sent Succesfully')">Alert</button>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">Name: Agency 2</h2>
+            <h5>Contact No.: </h5>
+            <h5>Availaible Resource:  </h5>
+            
+        </div>
+        <button class="alert-button" onclick="showAlert('Button Clicked!')">Alert</button>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">Name: Agency 3</h2>
+            <h5>Contact No.: </h5>
+            <h5>Availaible Resource:  </h5>
+            
+        </div>
+        <button class="alert-button" onclick="showAlert('Button Clicked!')">Alert</button>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">Name: Agency 4</h2>
+            <h5>Contact No.: </h5>
+            <h5>Availaible Resource:  </h5>
+            
+        </div>
+        <button class="alert-button" onclick="showAlert('Message Sent')">Alert</button>
+    </div>
+</div>
+
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+
+</body>
+</html>

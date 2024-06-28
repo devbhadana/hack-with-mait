@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7ede2;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url(pexels-pixabay-266403.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 350px;
+            box-sizing: border-box;
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #e07a5f;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+            color: #7e685a;
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #c4a69d;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #e07a5f;
+        }
+
+        button {
+            background-color: #e07a5f;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c16857;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <form id="MainForm">
+        <label for="email">Email:</label>
+        <input id="Email" type="text" id="Email" placeholder="Enter your email">
+
+        <label for="password">Password:</label>
+        <input id="Password" type="password" id="Password" placeholder="Enter your password">
+         
+        <a href="home.html"> <button type="submit" class="btn btn-primary" style="float: right;">LogIn</button> </a>
+        <a href="register1.html"><button type="button" class="btn btn-primary me-3" style="float: right;">Sign Up </button></a>
+
+        <!-- <a href="index.html"><button type="button" onclick="performLogin()">Login</button></a> -->
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, get , ref , child} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDLpjdGOYaruohPqsPluMdTbHBVcWmaqWQ",
+  authDomain: "devbhadana-auth.firebaseapp.com",
+  projectId: "devbhadana-auth",
+  storageBucket: "devbhadana-auth.appspot.com",
+  messagingSenderId: "250059516214",
+  appId: "1:250059516214:web:69e4a8bee45094b64fab97",
+  measurementId: "G-W5MHHN0H54"
+};
+
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+const db=getDatabase();
+const auth=getAuth(app);
+const dbref=ref(db);
+
+let Email=document.getElementById('Email');
+let Password=document.getElementById('Password');
+
+let MainForm=document.getElementById('MainForm');
+
+let SignInUser = (evt) => {
+    evt.preventDefault();
+
+    signInWithEmailAndPassword(auth,Email.value ,Password.value)
+    .then((credentials)=>{
+      console.log(credentials.user);
+
+      sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+      window.location.href='index.html';
+    })
+    .catch((error)=>{
+         alert(error.message);
+         console.log(error.code);
+         console.log(error.message);
+
+    })
+}
+ MainForm.addEventListener('submit', SignInUser);
+
+</script>
+
+
+
+</body>
+</html>

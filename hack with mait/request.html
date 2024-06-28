@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Request Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            background-image: url(pexels-muallim-nur-19576471.jpg);
+    background-position: center;
+    background-size: cover;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, checkbox {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        checkbox {
+            margin-bottom: 0;
+        }
+
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<form onsubmit="myfunc(event)">
+    <label for="numberOfPeople">Number of People Needed:</label>
+    <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+
+    <label for="numberOfBots">Number of Bots Needed:</label>
+    <input type="number" id="numberOfBots" name="numberOfBots" required>
+
+    <label for="otherResource">Other Resource Needed:</label>
+    <input type="text" id="otherResource" name="otherResource" required>
+
+    <label>
+        <input type="checkbox" id="medicalService" name="medicalService"> Medical Service Needed
+    </label>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function myfunc(event){
+        event.preventDefault();
+
+         var numberOfPeople = document.getElementById("numberOfPeople").value;
+         var numberOfBots = document.getElementById("numberOfBots").value;
+         var otherResource = document.getElementById("otherResource").value;
+         var medicalService = document.getElementById("medicalService");
+
+         medicalService ? medicalService = "yes" : medicalService = "no";
+
+         localStorage.setItem('numberOfPeople',numberOfPeople);
+         localStorage.setItem('numberOfBots',numberOfBots);
+         localStorage.setItem('otherResource',otherResource);
+         localStorage.setItem('medicalService',medicalService);
+    }
+</script>
+
+</body>
+</html>
